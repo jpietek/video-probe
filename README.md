@@ -36,8 +36,10 @@ Stream metadata apart from additional technical info may contain disposition and
 
 ## Build
 
-mvn package -> jar
-mvn package docker:build -> docker image
+mvn package -> jar <br />
+mvn package docker:build -> docker image <br />
+<br />
+run with: java -jar probe-video.jar <br />
 
 ## Features
 
