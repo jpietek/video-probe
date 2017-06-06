@@ -4,33 +4,38 @@ Simple REST service written in Spring Boot that extracts metadata from media fil
 
 ## Example usage
 
-curl -F 'video=@<path_to_file>' <user>:<password>@<host>:8080/video/probe
+curl -F 'video=@<path_to_file>' \<user>:\<password>@\<host>:8080/video/probe
 
 ## Output format
 
-Each valid request, excluding 500s, 404s etc. should respond with json:
+Each valid request should respond with json:
 
-{ message: <"ffbrobe ok" or failure message>, result: <ffprobe json>, success: <boolean> }
+{ message: \<"ffprobe ok" or failure message>, <br />
+result: \<ffprobe json>, <br />
+success: \<boolean> }
 
 If the metadata api call fails, success flag is false and result is null.
 
 ffprobe json : { 
-	array_of_streams : [ stream1, stream2 etc. ], <- by convention 0th index is video, 1st is audio
-	format : {} <- per container metadata, like number of streams, bitrate or size in bytes
+	array_of_streams : [ stream1, stream2 etc. ], (by convention 0th index is video, 1st is audio) <br />
+	format : { } <- per container metadata, like number of streams, bitrate or size in bytes
 }
 
 stream : {
-	"index" : <long>,
-	"codec" : <codec shortname>,
-	"codec_type" : <audio/video>,
-	"bit_rate" : <long> <- not always available per stream
-	(...) -  Stream metadata may also contain disposition info and tags. For details refer to ffprobe documentation https://ffmpeg.org/ffprobe.html
+	"index" : \<long>, <br />
+	"codec" : \<codec shortname>, <br />
+	"codec_type" : \<audio/video>, <br />
+	"bit_rate" : \<long> (not always available per stream) <br />
+	(...) <br /> 
 }
+	
+Stream metadata may also contain disposition info and tags. For details refer to ffprobe documentation https://ffmpeg.org/ffprobe.html
+
 
 ## Build
 
 mvn package -> jar
-mvn package docker:build
+mvn package docker:build -> docker image
 
 ## Features
 
