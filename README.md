@@ -11,9 +11,9 @@ curl -F 'video=@<path_to_file>' \<user>:\<password>@\<host>:8080/video/probe
 Each valid request should respond with json:
 
 { <br /> 
-	message: \<"ffprobe ok" or failure message>, <br />
-	result: \<ffprobe json>, <br />
-	success: \<boolean> <br /> 
+&nbsp;&nbsp;&nbsp;	message: \<"ffprobe ok" or failure message>, <br />
+&nbsp;&nbsp;&nbsp;	result: \<ffprobe json>, <br />
+&nbsp;&nbsp;&nbsp;	success: \<boolean> <br /> 
 }
 
 If the metadata api call fails, success flag is false and result is null.
@@ -27,11 +27,11 @@ stream : { <br />
 &nbsp;&nbsp;&nbsp; "index" : \<long>, <br />
 &nbsp;&nbsp;&nbsp; "codec" : \<codec shortname>, <br />
 &nbsp;&nbsp;&nbsp; "codec_type" : \<audio/video>, <br />
-&nbsp;&nbsp;&nbsp; "bit_rate" : \<long> (not always available per stream) <br />
+&nbsp;&nbsp;&nbsp; "bit_rate" : \<long>, (not always available per stream) <br />
 	(...) <br /> 
 }
 	
-Stream metadata may also contain disposition info and tags. For details refer to ffprobe documentation https://ffmpeg.org/ffprobe.html
+Stream metadata apart from additional technical info may contain disposition and tags. For details refer to ffprobe documentation https://ffmpeg.org/ffprobe.html
 
 
 ## Build
