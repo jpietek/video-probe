@@ -12,16 +12,16 @@ import lombok.Setter;
 @Setter
 public class Disposition {
 
-	    private long _default; 
-	    private long dub; 
-	    private long original; 
-	    private long comment; 
-	    private long lyrics; 
-	    private long karaoke; 
-	    private long forced; 
-	    private long hearing_impaired; 
-	    private long visual_impaired; 
-	    private long clean_effects; 
-	    private long attached_pic;
+	    private Long _default; 
+	    private Long dub; 
+	    private Long original; 
+	    private Long comment; 
+	    private Long lyrics; 
+	    private Long karaoke; 
+	    private Long forced; 
+	    private Long hearing_impaired; 
+	    private Long visual_impaired; 
+	    private Long clean_effects; 
+	    private Long attached_pic;
 	
 }

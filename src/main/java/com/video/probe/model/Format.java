@@ -12,9 +12,9 @@ import lombok.Setter;
 @Setter
 public class Format { 
 	 
-    private long nb_streams; 
-    private long nb_programs;
-    private long probe_score;
+    private Long nb_streams; 
+    private Long nb_programs;
+    private Long probe_score;
     private String format_name; 
     private String format_long_name; 
     private String start_time; 
