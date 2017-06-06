@@ -34,6 +34,10 @@ public class ApiTests {
 	private final File VALID_MP4 
 	= new File(getClass().getClassLoader().getResource("master.mp4").getFile());
 
+	private final File VALID_WEBM 
+	= new File(getClass().getClassLoader().getResource("master.webm").getFile());
+
+	
 	private final File TXT_FILE 
 	= new File(getClass().getClassLoader().getResource("txt").getFile());
 
@@ -153,6 +157,21 @@ public class ApiTests {
 		.post("/video/probe")
 		.thenReturn().getBody().jsonPath().get("message").toString();
 	}
+	
+	@Test
+	public void checkNotExistingField() {
+		
+		// webm stream:0 does not contain bitrate, so it should not be
+		// included in output json, expect null not misleading long = 0
+		String bitrate = given().port(port)
+				.auth().basic("user", VALID_PASS)
+				.multiPart("video", VALID_WEBM)
+				.when()
+				.post("/video/probe")
+				.thenReturn().getBody().jsonPath().get("bit_rate");
+		
+		assertEquals(null, bitrate);
+	}
 
 	private boolean spamRequests(int n) {
 		ExecutorService e = Executors.newFixedThreadPool(n);
@@ -174,11 +193,15 @@ public class ApiTests {
 		return true;
 	}
 
+	// Fire up 10 requests at once, one should be denied 
+	// as it hits api rate limit
 	@Test
 	public void overRateLimit() {
 		assertFalse(spamRequests(10));
 	}
 
+	// Fire up 9 requests at once, which is exactly below rate limit
+	// every req should be processed with result = true
 	@Test
 	public void withinRateLimit() {
 		assertTrue(spamRequests(9));
