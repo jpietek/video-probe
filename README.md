@@ -10,9 +10,11 @@ curl -F 'video=@<path_to_file>' \<user>:\<password>@\<host>:8080/video/probe
 
 Each valid request should respond with json:
 
-{ message: \<"ffprobe ok" or failure message>, <br />
-result: \<ffprobe json>, <br />
-success: \<boolean> }
+{ <br /> 
+	message: \<"ffprobe ok" or failure message>, <br />
+	result: \<ffprobe json>, <br />
+	success: \<boolean> <br /> 
+}
 
 If the metadata api call fails, success flag is false and result is null.
 
