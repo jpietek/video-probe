@@ -18,16 +18,16 @@ Each valid request should respond with json:
 
 If the metadata api call fails, success flag is false and result is null.
 
-ffprobe json : <br /> { 
-	array_of_streams : [ stream1, stream2 etc. ], (by convention 0th index is usually video, 1st - audio) <br />
-	format : { } (per container metadata, like number of streams, bitrate or size in bytes) <br />
+ffprobe json : { <br /> 
+&nbsp;&nbsp;&nbsp; streams : [ stream1, stream2 etc. ], (by convention 0th index is usually video, 1st - audio) <br />
+&nbsp;&nbsp;&nbsp; format : { } (per container metadata, like number of streams, bitrate or size in bytes) <br />
 }
 
 stream : { <br />
-	"index" : \<long>, <br />
-	"codec" : \<codec shortname>, <br />
-	"codec_type" : \<audio/video>, <br />
-	"bit_rate" : \<long> (not always available per stream) <br />
+&nbsp;&nbsp;&nbsp; "index" : \<long>, <br />
+&nbsp;&nbsp;&nbsp; "codec" : \<codec shortname>, <br />
+&nbsp;&nbsp;&nbsp; "codec_type" : \<audio/video>, <br />
+&nbsp;&nbsp;&nbsp; "bit_rate" : \<long> (not always available per stream) <br />
 	(...) <br /> 
 }
 	
